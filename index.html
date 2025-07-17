@@ -274,6 +274,13 @@
       </div>
     </div>
 
+    <!-- Música de fondo -->
+    <audio id="background-music" loop>
+        <!-- Música sin copyright añadida -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/24/audio_139958d41a.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <!-- YouTube IFrame Player API Script -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
@@ -401,6 +408,16 @@
 
           observer.observe(videoElement);
         }
+
+        // --- Música de Fondo Script ---
+        // La música se reproduce con el primer clic del usuario en cualquier parte de la página
+        document.body.addEventListener('click', function() {
+            const music = document.getElementById('background-music');
+            if (music.paused) {
+                music.play().catch(error => console.log("La reproducción automática fue prevenida por el navegador."));
+            }
+        }, { once: true }); // El evento solo se disparará una vez para evitar múltiples reproducciones
+
     </script>
 </body>
 </html>
