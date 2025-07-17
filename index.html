@@ -101,7 +101,8 @@
                 <div class="mt-12 mx-auto max-w-xs md:max-w-sm">
                     <div class="bg-white p-4 rounded-3xl shadow-2xl border border-gray-200">
                         <div class="aspect-9-16">
-                            <iframe class="rounded-2xl" src="https://www.youtube.com/embed/wxwAv8sWBrg?si=rYnlGq2uV_0W25c-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- CORRECCIÓN: Se añaden los parámetros autoplay, loop, playlist y playsinline a la URL del video -->
+                            <iframe id="youtube-player" class="rounded-2xl" src="https://www.youtube.com/embed/wxwAv8sWBrg?si=rYnlGq2uV_0W25c-&enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=wxwAv8sWBrg&playsinline=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -273,7 +274,8 @@
       </div>
     </div>
 
-
+    <!-- YouTube IFrame Player API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // Script original para iconos
         feather.replace();
@@ -283,10 +285,19 @@
         const chatBox = document.getElementById('chat-box');
         const chatMessages = document.getElementById('chat-messages');
         const userInput = document.getElementById('user-input');
+        let isFirstTimeOpen = true; // Flag para controlar el saludo inicial
 
         chatIcon.addEventListener('click', () => {
-          // Cambiamos la propiedad display de la caja de chat
-          chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+          const isChatOpen = chatBox.style.display === 'flex';
+          chatBox.style.display = isChatOpen ? 'none' : 'flex';
+
+          // Si se abre el chat por primera vez, enviar saludo automático
+          if (!isChatOpen && isFirstTimeOpen) {
+            setTimeout(() => {
+              appendMessage('¡Hola! 👋 Soy tu asistente de MagicParty. ¿Listo para crear una invitación inolvidable?');
+            }, 300); // Pequeño retraso para que la animación sea fluida
+            isFirstTimeOpen = false; // Cambiar el flag para que no se repita
+          }
         });
 
         function appendMessage(message, sender = 'bot') {
@@ -294,7 +305,6 @@
           messageDiv.style.marginBottom = '8px';
           messageDiv.style.display = 'flex';
           
-          // Alineamos los mensajes del usuario a la derecha
           if (sender === 'user') {
               messageDiv.style.justifyContent = 'flex-end';
           }
@@ -359,6 +369,38 @@
             }
         });
 
+        // --- YouTube Autoplay Script ---
+        let player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('youtube-player', {
+            events: {
+              'onReady': onPlayerReady,
+            }
+          });
+        }
+
+        function onPlayerReady(event) {
+          // CORRECCIÓN: Asegurarse de que el video esté silenciado para el autoplay en móviles
+          event.target.mute();
+          const videoElement = event.target.getIframe();
+          const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.5 // Triggers when 50% of the element is visible
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                player.playVideo();
+              } else {
+                player.pauseVideo();
+              }
+            });
+          }, observerOptions);
+
+          observer.observe(videoElement);
+        }
     </script>
 </body>
 </html>
