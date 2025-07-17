@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento Mágico - Invitaciones que tus amigos recordarán</title>
+    <title>MagicParty - Invitaciones que tus amigos recordarán</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,20 +34,20 @@
     <div class="container mx-auto">
 
         <!-- Barra de Navegación -->
-        <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 shadow-sm">
+        <header class="sticky top-0 bg-white/80 backdrop-blur-sm z-50 shadow-sm">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="text-2xl font-bold text-gray-900 flex items-center">
                     <span class="bg-rose-500 text-white rounded-md p-2 mr-2">
-                        <i data-feather="star" class="w-6 h-6"></i>
+                        <i data-feather="gift" class="w-6 h-6"></i>
                     </span>
-                    Evento Mágico
+                    MagicParty
                 </a>
                 
                 <!-- Menú de Navegación (Desktop) -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#benefits" class="text-gray-600 hover:text-rose-500 transition duration-300">Beneficios</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-rose-500 transition duration-300">Testimonios</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-rose-500 transition duration-300">Reseñas</a>
                     <a href="#offer" class="text-gray-600 hover:text-rose-500 transition duration-300">Planes</a>
                     <a href="#faq" class="text-gray-600 hover:text-rose-500 transition duration-300">FAQ</a>
                 </nav>
@@ -60,7 +60,7 @@
         </header>
 
         <!-- Sección Hero -->
-        <main class="pt-24 hero-gradient">
+        <main class="pt-12 hero-gradient">
             <section class="text-center py-16 px-6">
                 <!-- Headline (Hook) -->
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
@@ -94,33 +94,40 @@
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Una experiencia completa en un solo link</h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-10">
                     <div class="flex items-start space-x-4">
-                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3"><i data-feather="music" class="w-6 h-6"></i></div>
+                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">🎵</div>
                         <div>
                             <h3 class="font-semibold text-lg">Agrega tu canción favorita</h3>
                             <p class="text-gray-600">Crea el ambiente perfecto desde el momento en que tus invitados abren la invitación.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3"><i data-feather="check-square" class="w-6 h-6"></i></div>
+                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">📅</div>
                         <div>
                             <h3 class="font-semibold text-lg">Confirmación de asistencia fácil</h3>
                             <p class="text-gray-600">Integramos un formulario de Google para que sepas quién viene sin complicaciones.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3"><i data-feather="camera" class="w-6 h-6"></i></div>
+                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">📸</div>
                         <div>
-                            <h3 class="font-semibold text-lg">Tus fotos en un solo lugar</h3>
+                            <h3 class="font-semibold text-lg">Tus fotos de la fiesta en un solo lugar</h3>
                             <p class="text-gray-600">Tus invitados pueden subir las fotos de la fiesta a una galería compartida y privada.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3"><i data-feather="edit-3" class="w-6 h-6"></i></div>
+                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">🎨</div>
                         <div>
                             <h3 class="font-semibold text-lg">Diseño único para cada evento</h3>
                             <p class="text-gray-600">Nos aseguramos de que tu tarjeta refleje tu estilo y el de tu celebración.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4 md:col-span-2 md:justify-center">
+                        <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">🔁</div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Todo en un solo link que puedes compartir</h3>
+                            <p class="text-gray-600">Envía tu invitación por WhatsApp, email o redes sociales de la forma más fácil.</p>
                         </div>
                     </div>
                 </div>
@@ -155,16 +162,16 @@
                 <div class="border border-gray-200 rounded-xl p-8 flex flex-col text-center">
                     <h3 class="text-2xl font-semibold text-gray-900">Tarjeta Digital</h3>
                     <p class="text-gray-600 mt-2 mb-4">La invitación interactiva perfecta.</p>
-                    <p class="text-5xl font-bold my-4">$25</p>
+                    <p class="text-5xl font-bold my-4">desde solo $25</p>
                     <a href="#" class="w-full mt-auto text-center bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition duration-300">
                         Crear mi tarjeta
                     </a>
                 </div>
                 <!-- Oferta premium -->
                 <div class="border-2 border-rose-500 rounded-xl p-8 flex flex-col relative shadow-2xl text-center">
-                    <span class="absolute top-0 -translate-y-1/2 bg-rose-500 text-white text-sm font-semibold px-3 py-1 rounded-full left-1/2 -translate-x-1/2">Más Popular</span>
-                    <h3 class="text-2xl font-semibold text-gray-900">Experiencia Completa</h3>
-                    <p class="text-gray-600 mt-2 mb-4">Tarjeta + video + fotos y más.</p>
+                    <span class="absolute top-0 -translate-y-1/2 bg-rose-500 text-white text-sm font-semibold px-3 py-1 rounded-full left-1/2 -translate-x-1/2">Experiencia Completa</span>
+                    <h3 class="text-2xl font-semibold text-gray-900">Tarjeta + Video + Fotos</h3>
+                    <p class="text-gray-600 mt-2 mb-4">La experiencia completa para un evento legendario.</p>
                     <p class="text-5xl font-bold my-4">$97</p>
                     <a href="#" class="w-full mt-auto text-center bg-rose-500 text-white font-semibold py-3 rounded-lg hover:bg-rose-600 transition duration-300">
                         Quiero la experiencia
@@ -173,9 +180,9 @@
             </div>
             <!-- Urgencia / Escasez -->
             <div class="text-center mt-12 max-w-2xl mx-auto">
-                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md" role="alert">
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-md" role="alert">
                   <p class="font-bold">¡Atención!</p>
-                  <p>Solo aceptamos <span class="font-extrabold">10 proyectos por semana</span> para asegurar máxima calidad.</p>
+                  <p>Solo aceptamos <span class="font-extrabold">10 espacios por semana</span> para asegurar calidad máxima.</p>
                   <p class="mt-2">Reserva hoy y recibe un <span class="font-extrabold">diseño express de 24 horas gratis.</span></p>
                 </div>
             </div>
@@ -190,7 +197,7 @@
                         <h3 class="font-semibold text-lg">¿Y si no me gusta el diseño?</h3>
                         <p class="text-gray-600 mt-1">¡No hay problema! Tienes hasta 2 rondas de revisión con nuestro diseñador para asegurarnos de que ames el resultado final. Tu satisfacción es nuestra prioridad.</p>
                     </div>
-                    <div class="border-t border-gray-200 pt-4">
+                    <div class="border-t border-gray-200 pt-4 mt-4">
                         <h3 class="font-semibold text-lg">¿Cómo se comparten las fotos después?</h3>
                         <p class="text-gray-600 mt-1">Tu invitación incluye un enlace a una galería privada y protegida con contraseña. Tú y tus invitados podrán subir y descargar todas las fotos del evento desde cualquier dispositivo.</p>
                     </div>
@@ -201,9 +208,9 @@
         <!-- Garantía -->
         <section id="guarantee" class="py-16 px-6 bg-rose-900 text-white">
             <div class="max-w-3xl mx-auto text-center">
-                <i data-feather="shield" class="w-12 h-12 mx-auto mb-4"></i>
+                <i data-feather="shield" class="w-12 h-12 mx-auto mb-4 text-rose-300"></i>
                 <h2 class="text-2xl font-bold mb-2">Nuestra Garantía de Felicidad</h2>
-                <p class="text-lg text-rose-200">"Si no te dicen que es la mejor tarjeta que han recibido, te devolvemos el dinero. Así de seguros estamos."</p>
+                <p class="text-lg text-rose-200">Si no te dicen que es la mejor tarjeta que han recibido, te devolvemos el dinero. Así de seguros estamos.</p>
             </div>
         </section>
 
@@ -211,13 +218,13 @@
         <!-- Footer -->
         <footer class="bg-gray-900 text-white py-12 px-6">
             <div class="max-w-6xl mx-auto text-center">
-                <h4 class="text-xl font-bold mb-2">Evento Mágico</h4>
+                <h4 class="text-xl font-bold mb-2">MagicParty</h4>
                 <p class="text-gray-400 mb-4">Creando recuerdos inolvidables.</p>
                 <a href="#offer" class="bg-rose-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-rose-600 transition duration-300 shadow-lg transform hover:scale-105 inline-block">
                     ¡Quiero mi tarjeta mágica! 🎉
                 </a>
                 <div class="mt-8 border-t border-gray-800 pt-8 text-gray-500">
-                    <p>&copy; 2024 Evento Mágico. Todos los derechos reservados.</p>
+                    <p>&copy; 2024 MagicParty. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
