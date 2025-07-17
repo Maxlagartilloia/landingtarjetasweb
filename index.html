@@ -26,6 +26,28 @@
         .hero-gradient {
             background: linear-gradient(180deg, #fff1f2 0%, #ffffff 100%);
         }
+        /* Estilos para el botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-icon {
+            margin-top: 13px;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -49,6 +71,7 @@
                     <a href="#benefits" class="text-gray-600 hover:text-rose-500 transition duration-300">Beneficios</a>
                     <a href="#testimonials" class="text-gray-600 hover:text-rose-500 transition duration-300">Reseñas</a>
                     <a href="#offer" class="text-gray-600 hover:text-rose-500 transition duration-300">Planes</a>
+                    <a href="#contact-form" class="text-gray-600 hover:text-rose-500 transition duration-300">Contacto</a>
                     <a href="#faq" class="text-gray-600 hover:text-rose-500 transition duration-300">FAQ</a>
                 </nav>
 
@@ -163,7 +186,7 @@
                     <h3 class="text-2xl font-semibold text-gray-900">Tarjeta Digital</h3>
                     <p class="text-gray-600 mt-2 mb-4">La invitación interactiva perfecta.</p>
                     <p class="text-5xl font-bold my-4">desde solo $25</p>
-                    <a href="#" class="w-full mt-auto text-center bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition duration-300">
+                    <a href="#contact-form" class="w-full mt-auto text-center bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition duration-300">
                         Crear mi tarjeta
                     </a>
                 </div>
@@ -173,23 +196,29 @@
                     <h3 class="text-2xl font-semibold text-gray-900">Tarjeta + Video + Fotos</h3>
                     <p class="text-gray-600 mt-2 mb-4">La experiencia completa para un evento legendario.</p>
                     <p class="text-5xl font-bold my-4">$97</p>
-                    <a href="#" class="w-full mt-auto text-center bg-rose-500 text-white font-semibold py-3 rounded-lg hover:bg-rose-600 transition duration-300">
+                    <a href="#contact-form" class="w-full mt-auto text-center bg-rose-500 text-white font-semibold py-3 rounded-lg hover:bg-rose-600 transition duration-300">
                         Quiero la experiencia
                     </a>
                 </div>
             </div>
-            <!-- Urgencia / Escasez -->
-            <div class="text-center mt-12 max-w-2xl mx-auto">
-                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-md" role="alert">
-                  <p class="font-bold">¡Atención!</p>
-                  <p>Solo aceptamos <span class="font-extrabold">10 espacios por semana</span> para asegurar calidad máxima.</p>
-                  <p class="mt-2">Reserva hoy y recibe un <span class="font-extrabold">diseño express de 24 horas gratis.</span></p>
+        </section>
+        
+        <!-- Sección de Formulario de Contacto -->
+        <section id="contact-form" class="py-20 px-6 bg-gray-50">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-2">¡Comencemos a planear tu fiesta!</h2>
+                <p class="text-lg text-gray-600 text-center mb-8">Rellena el formulario y nos pondremos en contacto contigo.</p>
+                
+                <!-- INSTRUCCIÓN: Reemplaza la URL en el atributo 'src' con el enlace de tu propio Google Form -->
+                <!-- Para obtener el enlace: En tu Google Form, haz clic en "Enviar" > "Insertar HTML" (<>) y copia el enlace que aparece en src="..." -->
+                <div class="aspect-w-16 aspect-h-9">
+                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScP_e-0t-qYqW8-pP9qJ8rF2bC3V4lM5n6o7P8rI9t0w/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
                 </div>
             </div>
         </section>
-        
+
         <!-- Sección FAQ -->
-        <section id="faq" class="py-20 px-6 bg-gray-50">
+        <section id="faq" class="py-20 px-6 bg-white">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl font-bold text-center mb-8">Preguntas Frecuentes</h2>
                 <div class="space-y-4">
@@ -230,6 +259,13 @@
         </footer>
 
     </div>
+    
+    <!-- Botón Flotante de WhatsApp -->
+    <!-- INSTRUCCIÓN: Reemplaza "TUNUMERO" con tu número de WhatsApp completo, incluyendo el código de país. Ej: 5491112345678 -->
+    <a href="https://wa.me/TUNUMERO" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+
 
     <script>
         feather.replace();
