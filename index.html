@@ -321,9 +321,12 @@
             userInput.value = '';
 
             try {
-                // CORRECCIÓN: Se espera una respuesta de texto plano del webhook
+                // CORRECCIÓN: Se añade la cabecera Content-Type para asegurar que el servidor entienda el formato JSON.
                 const response = await fetch('https://hook.us2.make.com/ot4ivqg5y3ni6l04lwcvchh2iubgzjqj', {
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({ mensaje: message }) 
                 });
 
