@@ -33,6 +33,19 @@
         #chat-icon:hover {
             transform: scale(1.1);
         }
+        /* Clase para la relación de aspecto del video (9:16) */
+        .aspect-9-16 {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%; /* 16 / 9 * 100 */
+        }
+        .aspect-9-16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -84,13 +97,12 @@
                     ¡Quiero mi tarjeta mágica! 🎉
                 </a>
 
-                <!-- Imagen de ejemplo interactivo -->
-                <div class="mt-12 mx-auto max-w-sm">
+                <!-- Video de ejemplo interactivo -->
+                <div class="mt-12 mx-auto max-w-xs md:max-w-sm">
                     <div class="bg-white p-4 rounded-3xl shadow-2xl border border-gray-200">
-                         <img src="https://placehold.co/400x800/f43f5e/FFFFFF?text=Nuestra%20Boda%0A%0A%0A%0AAna%20%26%20Luis%0A%0A25.10.2025" 
-                         alt="Ejemplo de una tarjeta de invitación de boda digital en un teléfono" 
-                         class="rounded-2xl"
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x800/e0e0e0/333333?text=Imagen+no+disponible';">
+                        <div class="aspect-9-16">
+                            <iframe class="rounded-2xl" src="https://www.youtube.com/embed/wxwAv8sWBrg?si=rYnlGq2uV_0W25c-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </section>
