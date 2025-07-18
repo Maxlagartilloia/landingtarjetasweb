@@ -46,6 +46,25 @@
         #chat-bubble:hover {
             transform: scale(1.1);
         }
+        /* Estilos para el indicador de "escribiendo" */
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #9E9E9E;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.3s infinite;
+        }
+        .typing-indicator span:nth-of-type(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-of-type(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -87,9 +106,9 @@
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
                     La invitación que tus amigos van a <span class="text-rose-500">guardar para siempre.</span>
                 </h1>
-                <!-- Subheadline Emocional -->
+                <!-- Subheadline Emocional (ACTUALIZADO) -->
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    No es solo una tarjeta, es una experiencia que vive antes, durante y después de tu evento.
+                    No es solo una tarjeta, es el recuerdo vivo de tu fiesta. Un link que tus invitados usarán antes para confirmar, y después para revivir cada momento.
                 </p>
                 
                 <!-- Botón de CTA claro -->
@@ -130,11 +149,12 @@
                             <p class="text-gray-600">Integramos un formulario de Google para que sepas quién viene sin complicaciones.</p>
                         </div>
                     </div>
+                    <!-- Beneficio de Fotos (ACTUALIZADO) -->
                     <div class="flex items-start space-x-4">
                         <div class="bg-rose-100 text-rose-500 rounded-lg p-3 text-2xl">📸</div>
                         <div>
                             <h3 class="font-semibold text-lg">Tus fotos de la fiesta en un solo lugar</h3>
-                            <p class="text-gray-600">Tus invitados pueden subir las fotos de la fiesta a una galería compartida y privada.</p>
+                            <p class="text-gray-600">El mismo link de la invitación se transforma en una galería privada. ¡Todos podrán subir sus fotos y reírse juntos de las mejores ocurrencias!</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
@@ -155,7 +175,7 @@
             </div>
         </section>
 
-        <!-- Sección de Testimonios -->
+        <!-- Sección de Testimonios (ACTUALIZADO) -->
         <section id="testimonials" class="py-20 px-6 bg-gray-50">
             <div class="max-w-2xl mx-auto text-center">
                 <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
@@ -165,7 +185,7 @@
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Foto';">
                     <div class="p-8">
                         <blockquote class="text-xl text-gray-700 italic mb-6">
-                            “Cuando mis invitados vieron esto... ¡todos querían uno para su fiesta! Fue el tema de conversación. La mejor decisión que tomé.”
+                            “¡Fue increíble! Días después de la fiesta, todos seguían entrando al link para subir fotos y comentar los mejores momentos. ¡El recuerdo sigue vivo gracias a la tarjeta!”
                         </blockquote>
                         <p class="font-semibold text-gray-900">Ana Morales</p>
                         <p class="text-gray-500">Anfitriona del Mejor Cumpleaños del Año</p>
@@ -268,7 +288,7 @@
     <div id="magic-chat" style="display: none; max-width: 400px; border: 1px solid #ccc; border-radius: 10px; padding: 10px; font-family: sans-serif; box-shadow: 0 0 10px rgba(0,0,0,0.1); position: fixed; bottom: 90px; right: 20px; background: white; z-index: 9999;">
       <h3 style="margin: 0 0 10px; color: #ff3366;">Asistente Tarjeta Mágica 🎉</h3>
       <div id="chat-window" style="height: 300px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 5px; background: #f9f9f9; margin-bottom: 10px;">
-        <!-- El saludo inicial se agregará con JavaScript -->
+        <!-- El saludo inicial ahora viene de la IA -->
       </div>
       <input type="text" id="user-message" placeholder="Escribe tu mensaje..." style="width: 74%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
       <button id="send-button" style="width: 24%; padding: 8px; background: #ff3366; color: white; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
@@ -295,19 +315,64 @@
         const userInput = document.getElementById('user-message');
         let isFirstChatOpen = true;
 
+        // Función para manejar el envío de mensajes (reutilizable)
+        async function fetchAIResponse(message) {
+            // Mostrar indicador de "escribiendo"
+            const typingBubble = document.createElement('div');
+            typingBubble.id = 'typing-indicator';
+            typingBubble.style.margin = '10px 0';
+            typingBubble.style.textAlign = 'left';
+            typingBubble.innerHTML = `<span style="background:#ffe0e0; padding: 12px 12px 8px; border-radius: 10px; display: inline-block;"><div class="typing-indicator"><span></span><span></span><span></span></div></span>`;
+            chatWindow.appendChild(typingBubble);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            try {
+                const response = await fetch('https://hook.us2.make.com/ot4ivqg5y3ni6l04lwcvchh2iubgzjqj', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje: message })
+                });
+
+                if (!response.ok) throw new Error(`Error del servidor: ${response.status}`);
+
+                const botResponseText = await response.text();
+                
+                document.getElementById('typing-indicator').remove();
+
+                // Mostrar burbuja del bot
+                const botBubble = document.createElement('div');
+                botBubble.style.margin = '10px 0';
+                botBubble.style.textAlign = 'left';
+                botBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">${botResponseText || 'Ups, hubo un error 😢'}</span>`;
+                chatWindow.appendChild(botBubble);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            } catch (error) {
+                console.error("Error en el fetch:", error);
+                if (document.getElementById('typing-indicator')) {
+                    document.getElementById('typing-indicator').remove();
+                }
+                const errorBubble = document.createElement('div');
+                errorBubble.style.margin = '10px 0';
+                errorBubble.style.textAlign = 'left';
+                errorBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">Error al conectar con el asistente 😢</span>`;
+                chatWindow.appendChild(errorBubble);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }
+
         chatBubble.addEventListener('click', () => {
             const isChatVisible = magicChat.style.display === 'block';
             magicChat.style.display = isChatVisible ? 'none' : 'block';
+            
+            // Si se abre el chat por primera vez, enviar saludo a la IA
             if (!isChatVisible && isFirstChatOpen) {
-                const initialMessage = document.createElement('div');
-                initialMessage.style.color = '#888';
-                initialMessage.textContent = 'Hola 👋 ¿En qué puedo ayudarte con tu Tarjeta Mágica?';
-                chatWindow.appendChild(initialMessage);
+                fetchAIResponse("Hola, saluda al usuario y preséntate como el asistente de MagicParty.");
                 isFirstChatOpen = false;
             }
         });
 
-        async function handleSendMessage() {
+        async function handleUserMessage() {
             const message = userInput.value.trim();
             if (!message) return;
 
@@ -320,43 +385,14 @@
             chatWindow.scrollTop = chatWindow.scrollHeight;
             userInput.value = '';
 
-            try {
-                // Llamada a la Función de Netlify
-                const response = await fetch('/.netlify/functions/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ mensaje: message }) 
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Error del servidor: ${response.status}`);
-                }
-
-                const data = await response.json();
-
-                // Mostrar burbuja del bot
-                const botBubble = document.createElement('div');
-                botBubble.style.margin = '10px 0';
-                botBubble.style.textAlign = 'left';
-                botBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">${data.reply || 'Ups, hubo un error 😢'}</span>`;
-                chatWindow.appendChild(botBubble);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-
-            } catch (error) {
-                console.error("Error en el fetch:", error);
-                const errorBubble = document.createElement('div');
-                errorBubble.style.margin = '10px 0';
-                errorBubble.style.textAlign = 'left';
-                errorBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">Error al conectar con el asistente 😢</span>`;
-                chatWindow.appendChild(errorBubble);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }
+            // Enviar mensaje del usuario a la IA
+            fetchAIResponse(message);
         }
 
-        sendButton.addEventListener('click', handleSendMessage);
+        sendButton.addEventListener('click', handleUserMessage);
         userInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                handleSendMessage();
+                handleUserMessage();
             }
         });
 
