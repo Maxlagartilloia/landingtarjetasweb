@@ -1,0 +1,14 @@
+{
+  "nombre": "Lucas",
+  "fecha": "2025-08-20",
+  "direccion": "Av. Las Palmeras 123, Ciudad Jardín",
+  "maps": "https://goo.gl/maps/abcdef123",
+  "musica": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  "imagenes": [
+    "https://example.com/lucas1.jpg",
+    "https://example.com/lucas2.jpg",
+    "https://example.com/lucas3.jpg"
+  ],
+  "mensaje": "¡Ven a celebrar mi cumple número 10! 🎉",
+  "contador": "2025-08-20T18:00:00"
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación de Lucas</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fff0f5; }
+    img { width: 200px; margin: 10px; }
+    iframe { width: 100%; height: 200px; }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">¡Te invito a mi cumple!</h1>
+  <p id="mensaje"></p>
+  <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+  <div id="mapa"></div>
+  <h3>Fotos</h3>
+  <div id="galeria"></div>
+  <h3>Mi música</h3>
+  <div id="musica"></div>
+  <h3>Faltan:</h3>
+  <div id="contador"></div>
+
+  <script>
+    async function cargarDatos() {
+      const res = await fetch('data.json');
+      const data = await res.json();
+
+      document.getElementById('titulo').innerText = `¡Hola, soy ${data.nombre}!`;
+      document.getElementById('mensaje').innerText = data.mensaje;
+      document.getElementById('direccion').innerText = data.direccion;
+      document.getElementById('mapa').innerHTML = `<iframe src="${data.maps}" frameborder="0"></iframe>`;
+      document.getElementById('musica').innerHTML = `<iframe src="${data.musica}" frameborder="0" allowfullscreen></iframe>`;
+
+      const galeria = document.getElementById('galeria');
+      data.imagenes.forEach(img => {
+        const i = document.createElement('img');
+        i.src = img;
+        galeria.appendChild(i);
+      });
+
+      const countdown = () => {
+        const final = new Date(data.contador);
+        const ahora = new Date();
+        const diff = final - ahora;
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('contador').innerText = `${dias} días restantes`;
+      };
+      countdown();
+      setInterval(countdown, 86400000);
+    }
+
+    cargarDatos();
+  </script>
+</body>
+</html>
