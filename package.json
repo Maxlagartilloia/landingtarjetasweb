@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Invitación Mágica</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 8px; margin-bottom: 16px; }
+    button { padding: 10px 20px; background: #ff3366; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Crear Invitación Mágica 🎉</h1>
+  <form id="form-invitacion">
+    <label>Nombre del cumpleañero:</label>
+    <input type="text" id="nombre" required>
 
+    <label>Fecha del evento:</label>
+    <input type="date" id="fecha" required>
+
+    <label>Dirección del evento:</label>
+    <input type="text" id="direccion" required>
+
+    <label>Link de Spotify o música MP3:</label>
+    <input type="text" id="musica_url">
+
+    <label>Link del video de YouTube (solo código):</label>
+    <input type="text" id="video_youtube">
+
+    <label>Fotos (separadas por comas):</label>
+    <textarea id="galeria_fotos" rows="3"></textarea>
+
+    <label>Mensajes para el cumpleañero (separados por comas):</label>
+    <textarea id="mensajes" rows="3"></textarea>
+
+    <button type="submit">Generar Invitación</button>
+  </form>
+
+  <pre id="output" style="background:#f0f0f0; padding:20px;"></pre>
+
+  <script>
+    const form = document.getElementById('form-invitacion');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = {
+        nombre: document.getElementById('nombre').value,
+        fecha: document.getElementById('fecha').value,
+        direccion: document.getElementById('direccion').value,
+        mapa_embed: "", // Esto lo podemos automatizar después
+        musica_url: document.getElementById('musica_url').value,
+        video_youtube: document.getElementById('video_youtube').value,
+        galeria_fotos: document.getElementById('galeria_fotos').value.split(',').map(x => x.trim()),
+        mensajes: document.getElementById('mensajes').value.split(',').map(x => x.trim()),
+        tema_color: "#ff3366",
+        tema_nombre: "Fiesta Rosa",
+        galeria_abierta: true
+      };
+
+      output.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
