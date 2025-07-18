@@ -327,7 +327,8 @@
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
             try {
-                const response = await fetch('https://hook.us2.make.com/ot4ivqg5y3ni6l04lwcvchh2iubgzjqj', {
+                // CORRECCIÓN: La URL correcta para la función de Netlify
+                const response = await fetch('/.netlify/functions/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ mensaje: message })
@@ -335,7 +336,7 @@
 
                 if (!response.ok) throw new Error(`Error del servidor: ${response.status}`);
 
-                const botResponseText = await response.text();
+                const data = await response.json();
                 
                 document.getElementById('typing-indicator').remove();
 
@@ -343,7 +344,7 @@
                 const botBubble = document.createElement('div');
                 botBubble.style.margin = '10px 0';
                 botBubble.style.textAlign = 'left';
-                botBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">${botResponseText || 'Ups, hubo un error 😢'}</span>`;
+                botBubble.innerHTML = `<span style="background:#ffe0e0; padding: 8px 12px; border-radius: 10px; display: inline-block;">${data.reply || 'Ups, hubo un error 😢'}</span>`;
                 chatWindow.appendChild(botBubble);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
 
