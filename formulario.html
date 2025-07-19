@@ -80,51 +80,54 @@
 
         <!-- Contenedor del Formulario -->
         <div class="w-full max-w-2xl bg-gray-800/50 backdrop-blur-sm border border-fuchsia-500/20 rounded-2xl shadow-2xl shadow-fuchsia-500/20 p-8 mt-24">
-            <h1 class="text-3xl font-bold text-center mb-6 neon-text">Crear Invitación Mágica 🎉</h1>
-            <form id="form-invitacion">
+            <h1 class="text-3xl font-bold text-center mb-2 neon-text">Personaliza tu Invitación Mágica 🎉</h1>
+            <p class="text-lg text-gray-400 text-center mb-8">Completa los datos para crear tu invitación.</p>
+
+            <!-- Área de Notificación -->
+            <div id="form-notification" class="hidden p-4 mb-6 text-sm text-center rounded-lg" role="alert"></div>
+
+            <form id="tarjeta-form">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="nombre" class="font-semibold text-fuchsia-400">Nombre del cumpleañero:</label>
-                        <input type="text" id="nombre" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="nombre" class="font-semibold text-fuchsia-400">Nombre del bebé/festejado:</label>
+                        <input type="text" id="nombre" name="nombre" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
                         <label for="fecha" class="font-semibold text-fuchsia-400">Fecha del evento:</label>
-                        <input type="date" id="fecha" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <input type="date" id="fecha" name="fecha" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                 </div>
 
                 <div class="mt-6">
                     <label for="direccion" class="font-semibold text-fuchsia-400">Dirección del evento:</label>
-                    <input type="text" id="direccion" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                    <input type="text" id="direccion" name="direccion" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                 </div>
 
                 <div class="mt-6">
-                    <label for="musica_url" class="font-semibold text-fuchsia-400">Link de Spotify o música MP3:</label>
-                    <input type="text" id="musica_url" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                    <label for="musica_url" class="font-semibold text-fuchsia-400">Link de la música:</label>
+                    <input type="url" id="musica_url" name="musica_url" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                 </div>
 
                 <div class="mt-6">
-                    <label for="video_youtube" class="font-semibold text-fuchsia-400">Link del video de YouTube (solo código):</label>
-                    <input type="text" id="video_youtube" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                    <label for="video_youtube" class="font-semibold text-fuchsia-400">Link del video de YouTube:</label>
+                    <input type="url" id="video_youtube" name="video_youtube" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                 </div>
 
                 <div class="mt-6">
-                    <label for="galeria_fotos" class="font-semibold text-fuchsia-400">Fotos (URLs separadas por comas):</label>
-                    <textarea id="galeria_fotos" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
+                    <label for="galeria_fotos" class="font-semibold text-fuchsia-400">Galería de fotos (URLs separadas por coma):</label>
+                    <textarea id="galeria_fotos" name="galeria_fotos" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
                 </div>
 
                 <div class="mt-6">
-                    <label for="mensajes" class="font-semibold text-fuchsia-400">Mensajes para el cumpleañero (separados por comas):</label>
-                    <textarea id="mensajes" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
+                    <label for="mensajes" class="font-semibold text-fuchsia-400">Mensajes personalizados (separados por coma):</label>
+                    <textarea id="mensajes" name="mensajes" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
                 </div>
 
                 <div class="mt-8">
-                    <button type="submit" class="w-full text-white font-bold py-3 px-4 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 transition duration-300 neon-button">Generar Invitación</button>
+                    <button type="submit" class="w-full text-white font-bold py-3 px-4 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 transition duration-300 neon-button">Enviar Datos</button>
                 </div>
             </form>
         </div>
-
-        <pre id="output" class="w-full max-w-2xl bg-gray-900/80 border border-gray-700 text-green-400 p-6 rounded-lg mt-8 whitespace-pre-wrap break-all"></pre>
     </div>
 
     <script>
@@ -154,27 +157,67 @@
         createParticles();
 
         // Script del formulario
-        const form = document.getElementById('form-invitacion');
-        const output = document.getElementById('output');
+        const tarjetaForm = document.getElementById("tarjeta-form");
+        const notificationDiv = document.getElementById("form-notification");
 
-        form.addEventListener('submit', (e) => {
+        function showNotification(message, isError = false) {
+            notificationDiv.textContent = message;
+            notificationDiv.classList.remove('hidden');
+            if (isError) {
+                notificationDiv.classList.add('bg-red-900', 'text-red-300', 'border', 'border-red-500');
+                notificationDiv.classList.remove('bg-green-900', 'text-green-300', 'border-green-500');
+            } else {
+                notificationDiv.classList.add('bg-green-900', 'text-green-300', 'border', 'border-green-500');
+                notificationDiv.classList.remove('bg-red-900', 'text-red-300', 'border-red-500');
+            }
+            setTimeout(() => {
+                notificationDiv.classList.add('hidden');
+            }, 5000); // Ocultar después de 5 segundos
+        }
+
+        tarjetaForm.addEventListener("submit", function(e) {
             e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
 
+            const formData = new FormData(this);
             const data = {
-                nombre: document.getElementById('nombre').value,
-                fecha: document.getElementById('fecha').value,
-                direccion: document.getElementById('direccion').value,
-                mapa_embed: "", // Esto lo podemos automatizar después
-                musica_url: document.getElementById('musica_url').value,
-                video_youtube: document.getElementById('video_youtube').value,
-                galeria_fotos: document.getElementById('galeria_fotos').value.split(',').map(x => x.trim()),
-                mensajes: document.getElementById('mensajes').value.split(',').map(x => x.trim()),
-                tema_color: "#ff3366",
-                tema_nombre: "Fiesta Rosa",
-                galeria_abierta: true
+                nombre: formData.get("nombre"),
+                fecha: formData.get("fecha"),
+                direccion: formData.get("direccion"),
+                musica_url: formData.get("musica_url"),
+                video_youtube: formData.get("video_youtube"),
+                galeria_fotos: formData.get("galeria_fotos").split(",").map(f => f.trim()),
+                mensajes: formData.get("mensajes").split(",").map(m => m.trim())
             };
 
-            output.textContent = JSON.stringify(data, null, 2);
+            fetch("https://script.google.com/macros/s/AKfycbytDAUzuFg8kyOicxvv1gc1wzH7YzdRGFl_gxgu707OGP7uULuoRLd_xicfsZ521wxZ/exec", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    return res.text().then(text => { throw new Error(text || 'El servidor respondió con un error') });
+                }
+                return res.text();
+            })
+            .then(msg => {
+                showNotification("Formulario enviado con éxito: " + msg);
+                tarjetaForm.reset();
+            })
+            .catch(err => {
+                showNotification("Error al enviar el formulario. Por favor, inténtalo de nuevo.", true);
+                console.error(err);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar Datos';
+            });
         });
     </script>
 </body>
