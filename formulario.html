@@ -66,6 +66,17 @@
             font-weight: 600;
             color: #f0abfc; /* fuchsia-300 */
         }
+        /* Estilo para el select */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
     </style>
 </head>
 <body>
@@ -93,35 +104,38 @@
             <div id="form-notification" class="hidden p-4 mb-6 text-sm text-center rounded-lg" role="alert"></div>
 
             <!-- 🔮 FORMULARIO -->
-            <form id="magicForm">
+            <form id="invitacionForm">
                 <div class="space-y-6">
                     <div>
-                        <label for="nombre">Nombre del bebé/festejado:</label>
-                        <input type="text" id="nombre" name="nombre" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="nombre_bebe">Nombre del bebé/festejado:</label>
+                        <input type="text" id="nombre_bebe" name="nombre_bebe" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
-                        <label for="fecha">Fecha del evento:</label>
-                        <input type="date" id="fecha" name="fecha" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="fecha_evento">Fecha del evento:</label>
+                        <input type="date" id="fecha_evento" name="fecha_evento" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
-                        <label for="direccion">Dirección del evento:</label>
-                        <input type="text" id="direccion" name="direccion" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="direccion_evento">Dirección del evento:</label>
+                        <input type="text" id="direccion_evento" name="direccion_evento" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
-                        <label for="musica_url">Link de la música:</label>
-                        <input type="url" id="musica_url" name="musica_url" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="link_musica">Link de la música:</label>
+                        <input type="url" id="link_musica" name="link_musica" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
                         <label for="video_youtube">Video de YouTube:</label>
                         <input type="url" id="video_youtube" name="video_youtube" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
                     </div>
                     <div>
-                        <label for="galeria_fotos">Galería de fotos (separadas por coma):</label>
-                        <input type="text" id="galeria_fotos" name="galeria_fotos" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="galeria_fotos">¿Desea galería de fotos?</label>
+                        <select id="galeria_fotos" name="galeria_fotos" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="mensajes">Mensajes personalizados (separados por coma):</label>
-                        <input type="text" id="mensajes" name="mensajes" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                        <label for="comentarios">Comentarios:</label>
+                        <textarea id="comentarios" name="comentarios" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-3 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="mt-8">
@@ -159,7 +173,7 @@
         createParticles();
 
         // Script del formulario
-        const form = document.getElementById("magicForm");
+        const form = document.getElementById('invitacionForm');
         const notificationDiv = document.getElementById("form-notification");
 
         function showNotification(message, isError = false) {
@@ -174,38 +188,37 @@
             }
         }
 
-        form.addEventListener("submit", function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
 
-            const data = {
-                nombre: form.nombre.value,
-                fecha: form.fecha.value,
-                direccion: form.direccion.value,
-                musica_url: form.musica_url.value,
-                video_youtube: form.video_youtube.value,
-                galeria_fotos: form.galeria_fotos.value.split(',').map(f => f.trim()),
-                mensajes: form.mensajes.value.split(',').map(m => m.trim())
-            };
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
 
-            fetch("https://script.google.com/macros/s/AKfycbxH7JOjEpf4guPaDXtRzY7b3XgHJugQfhOyEI5y3Tql5nhY2CWb8IfxANO4EFFcvKE/exec", {
-                method: "POST",
-                mode: "no-cors",
+            fetch('https://script.google.com/macros/s/AKfycbxH7JOjEpf4guPaDXtRzY7b3XgHJugQfhOyEI5y3Tql5nhY2CWb8IfxANO4EFFcvKE/exec', {
+                method: 'POST',
+                body: JSON.stringify(data),
                 headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
+                    'Content-Type': 'application/json',
+                }
             })
-            .then(() => {
-                showNotification("Formulario enviado con éxito 🚀");
+            .then(res => {
+                if (!res.ok) {
+                   return res.text().then(text => { throw new Error(text || 'Error del servidor') });
+                }
+                return res.text();
+            })
+            .then(msg => {
+                showNotification('Formulario enviado con éxito 🚀');
                 form.reset();
             })
-            .catch(error => {
-                console.error("Error al enviar el formulario:", error);
-                showNotification("Hubo un error, inténtalo nuevamente.", true);
+            .catch(err => {
+                console.error('Error al enviar:', err);
+                showNotification('Hubo un problema al enviar el formulario 😞', true);
             })
             .finally(() => {
                 submitButton.disabled = false;
