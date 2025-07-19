@@ -26,22 +26,16 @@
         html {
             scroll-behavior: smooth;
         }
-        .hero-gradient {
-            background: radial-gradient(ellipse at top, #311b92, #111827);
-        }
         
-        /* Estilos para el efecto neón */
+        /* Estilos para el efecto neón (Luminosidad ajustada) */
         .neon-text {
             color: #fff;
             text-shadow:
-                0 0 7px #fff,
-                0 0 10px #fff,
-                0 0 21px #fff,
-                0 0 42px #f09,
-                0 0 82px #f09,
-                0 0 92px #f09,
-                0 0 102px #f09,
-                0 0 151px #f09;
+                0 0 5px #fff,
+                0 0 8px #fff,
+                0 0 15px #f09,
+                0 0 25px #f09,
+                0 0 45px #f09;
         }
         .neon-button {
              box-shadow: 0 0 .2rem #fff,
@@ -90,12 +84,13 @@
             width: 100%;
             padding-bottom: 177.77%; /* 16 / 9 * 100 */
         }
-        .aspect-9-16 iframe {
+        .aspect-9-16 iframe, .aspect-9-16 img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -108,7 +103,7 @@
     <div class="container mx-auto relative z-10">
 
         <!-- Barra de Navegación -->
-        <header class="sticky top-0 bg-gray-900/80 backdrop-blur-sm z-50 shadow-lg shadow-fuchsia-500/10">
+        <header class="sticky top-0 bg-gray-900/60 backdrop-blur-md z-50 shadow-lg shadow-fuchsia-500/10">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="text-2xl font-bold text-white flex items-center">
@@ -121,6 +116,7 @@
                 <!-- Menú de Navegación (Desktop) -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#benefits" class="text-gray-300 hover:text-fuchsia-400 transition duration-300">Beneficios</a>
+                    <a href="#designs" class="text-gray-300 hover:text-fuchsia-400 transition duration-300">Diseños</a>
                     <a href="#testimonials" class="text-gray-300 hover:text-fuchsia-400 transition duration-300">Reseñas</a>
                     <a href="#comprar" class="text-gray-300 hover:text-fuchsia-400 transition duration-300">Comprar</a>
                 </nav>
@@ -133,8 +129,8 @@
         </header>
 
         <!-- Sección Hero -->
-        <main class="pt-12 hero-gradient">
-            <section class="text-center py-16 px-6">
+        <main>
+            <section class="text-center pt-28 pb-16 px-6">
                 <!-- Headline (Hook) -->
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 neon-text">
                     La Invitación que tus Amigos Guardarán para Siempre
@@ -149,9 +145,9 @@
                     Comprar mi Tarjeta Mágica
                 </a>
 
-                <!-- Video de ejemplo interactivo -->
+                <!-- Video de ejemplo interactivo (con transparencia) -->
                 <div class="mt-12 mx-auto max-w-xs md:max-w-sm">
-                    <div class="bg-gray-800 p-4 rounded-3xl shadow-2xl border border-gray-700">
+                    <div class="bg-gray-900/50 backdrop-blur-md p-4 rounded-3xl shadow-2xl border border-gray-700">
                         <div class="aspect-9-16">
                             <iframe id="youtube-player" class="rounded-2xl" src="https://www.youtube.com/embed/FtuzRS0-X14?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=FtuzRS0-X14&playsinline=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
@@ -160,36 +156,36 @@
             </section>
         </main>
 
-        <!-- Sección de Beneficios -->
-        <section id="benefits" class="py-20 px-6 bg-gray-900">
+        <!-- Sección de Beneficios (SIN FONDO) -->
+        <section id="benefits" class="py-20 px-6">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Una experiencia completa en un solo link</h2>
                 </div>
                 <div class="grid md:grid-cols-2 gap-x-8 gap-y-10">
                     <div class="flex items-start space-x-4">
-                        <div class="bg-fuchsia-900/50 text-fuchsia-400 rounded-lg p-3 text-2xl">🎵</div>
+                        <div class="text-fuchsia-400 p-3 text-2xl">🎵</div>
                         <div>
                             <h3 class="font-semibold text-lg text-white">Música personalizada</h3>
                             <p class="text-gray-400">Cada tarjeta incluye la canción favorita del cumpleañero.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-fuchsia-900/50 text-fuchsia-400 rounded-lg p-3 text-2xl">📍</div>
+                        <div class="text-fuchsia-400 p-3 text-2xl">📍</div>
                         <div>
                             <h3 class="font-semibold text-lg text-white">Ubicación en Google Maps</h3>
                             <p class="text-gray-400">Tus invitados sabrán cómo llegar, sin perderse.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-fuchsia-900/50 text-fuchsia-400 rounded-lg p-3 text-2xl">📷</div>
+                        <div class="text-fuchsia-400 p-3 text-2xl">📷</div>
                         <div>
                             <h3 class="font-semibold text-lg text-white">Galería de fotos post-fiesta</h3>
                             <p class="text-gray-400">Todos pueden subir sus fotos al mismo link.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="bg-fuchsia-900/50 text-fuchsia-400 rounded-lg p-3 text-2xl">⏳</div>
+                        <div class="text-fuchsia-400 p-3 text-2xl">⏳</div>
                         <div>
                             <h3 class="font-semibold text-lg text-white">Cuenta regresiva</h3>
                             <p class="text-gray-400">Genera emoción antes del gran día.</p>
@@ -199,13 +195,60 @@
             </div>
         </section>
 
-        <!-- Sección de Testimonios -->
-        <section id="testimonials" class="py-20 px-6 bg-gray-800">
+        <!-- SECCIÓN DE DISEÑOS (SIN FONDO) -->
+        <section id="designs" class="py-20 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Explora Nuestros Diseños Mágicos</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Diseño 1 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/ec4899/white?text=Boda+Elegante" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para boda elegante">
+                        </div>
+                    </div>
+                    <!-- Diseño 2 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/8b5cf6/white?text=Fiesta+Neón" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para fiesta neón">
+                        </div>
+                    </div>
+                    <!-- Diseño 3 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/3b82f6/white?text=Cumple+Infantil" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para cumpleaños infantil">
+                        </div>
+                    </div>
+                    <!-- Diseño 4 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/f59e0b/white?text=Quinceañera" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para quinceañera">
+                        </div>
+                    </div>
+                    <!-- Diseño 5 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/10b981/white?text=Bautizo" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para bautizo">
+                        </div>
+                    </div>
+                    <!-- Diseño 6 -->
+                    <div class="p-3">
+                        <div class="aspect-9-16">
+                            <img src="https://placehold.co/400x711/ef4444/white?text=Evento+Corporativo" class="rounded-lg shadow-2xl border border-gray-700" alt="Diseño de invitación para evento corporativo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Testimonios (SIN FONDO) -->
+        <section id="testimonials" class="py-20 px-6">
             <div class="max-w-2xl mx-auto text-center">
-                <div class="bg-gray-900 rounded-xl shadow-lg border border-gray-700 overflow-hidden">
+                <div class="rounded-xl overflow-hidden">
                     <img src="https://placehold.co/600x400/a21caf/fdf4ff?text=Foto+del+Evento" 
                          alt="Foto de un cliente satisfecho" 
-                         class="w-full h-auto"
+                         class="w-full h-auto rounded-lg shadow-2xl border border-gray-700"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/9ca3af?text=Foto';">
                     <div class="p-8">
                         <blockquote class="text-xl text-gray-300 italic mb-6">
@@ -218,15 +261,15 @@
             </div>
         </section>
 
-        <!-- COMPRA (PayPal) -->
-        <section id="comprar" class="py-20 bg-gray-900 text-center">
+        <!-- COMPRA (PayPal) (SIN FONDO) -->
+        <section id="comprar" class="py-20 text-center px-6">
             <h2 class="text-3xl font-bold text-white mb-6 neon-text">¡Compra tu Tarjeta Mágica!</h2>
             <p class="text-lg mb-8 text-gray-300">Haz clic en el botón para pagar con PayPal. Después, serás redirigido para personalizar tu tarjeta.</p>
             <a href="https://www.paypal.com/ncp/payment/YFYPCLY4FZBGJ" target="_blank" class="inline-block bg-fuchsia-600 text-white text-xl font-bold px-10 py-4 rounded-full hover:bg-fuchsia-700 transition neon-button">Pagar $37</a>
         </section>
 
         <!-- Footer -->
-        <footer class="bg-black text-white py-12 px-6">
+        <footer class="bg-transparent text-white py-12 px-6">
             <div class="max-w-6xl mx-auto text-center">
                 <h4 class="text-xl font-bold mb-2">MagicParty</h4>
                 <p class="text-gray-400 mb-4">Creando recuerdos inolvidables.</p>
@@ -378,7 +421,7 @@
         });
 
         // --- YouTube Autoplay Script ---
-        let player;
+        var player; // CORREGIDO: Declarado como 'var' para evitar errores de inicialización
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('youtube-player', {
             events: { 'onReady': onPlayerReady }
