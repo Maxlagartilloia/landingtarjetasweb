@@ -1,66 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Crear Invitación Mágica</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
-    input, textarea { width: 100%; padding: 8px; margin-top: 8px; margin-bottom: 16px; }
-    button { padding: 10px 20px; background: #ff3366; color: white; border: none; border-radius: 5px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Crear Invitación Mágica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+        /* Estilos para el efecto neón */
+        .neon-text {
+            color: #fff;
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #f09,
+                0 0 82px #f09,
+                0 0 92px #f09,
+                0 0 102px #f09,
+                0 0 151px #f09;
+        }
+        .neon-button {
+             box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 2rem #bc13fe,
+              0 0 0.8rem #bc13fe,
+              0 0 2.8rem #bc13fe,
+              inset 0 0 1.3rem #bc13fe;
+        }
+        /* Estilos para las partículas flotantes */
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Crear Invitación Mágica 🎉</h1>
-  <form id="form-invitacion">
-    <label>Nombre del cumpleañero:</label>
-    <input type="text" id="nombre" required>
+    <!-- Contenedor de partículas flotantes -->
+    <div id="particles-container"></div>
 
-    <label>Fecha del evento:</label>
-    <input type="date" id="fecha" required>
+    <!-- Contenedor Principal -->
+    <div class="relative z-10 min-h-screen flex flex-col items-center justify-center p-4">
+        
+        <!-- Header -->
+        <header class="absolute top-0 left-0 w-full p-6">
+            <a href="#" class="text-2xl font-bold text-white flex items-center">
+                <span class="bg-fuchsia-500 text-white rounded-md p-2 mr-2">
+                    <i data-feather="gift" class="w-6 h-6"></i>
+                </span>
+                MagicParty
+            </a>
+        </header>
 
-    <label>Dirección del evento:</label>
-    <input type="text" id="direccion" required>
+        <!-- Contenedor del Formulario -->
+        <div class="w-full max-w-2xl bg-gray-800/50 backdrop-blur-sm border border-fuchsia-500/20 rounded-2xl shadow-2xl shadow-fuchsia-500/20 p-8 mt-24">
+            <h1 class="text-3xl font-bold text-center mb-6 neon-text">Crear Invitación Mágica 🎉</h1>
+            <form id="form-invitacion">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="nombre" class="font-semibold text-fuchsia-400">Nombre del cumpleañero:</label>
+                        <input type="text" id="nombre" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="fecha" class="font-semibold text-fuchsia-400">Fecha del evento:</label>
+                        <input type="date" id="fecha" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                    </div>
+                </div>
 
-    <label>Link de Spotify o música MP3:</label>
-    <input type="text" id="musica_url">
+                <div class="mt-6">
+                    <label for="direccion" class="font-semibold text-fuchsia-400">Dirección del evento:</label>
+                    <input type="text" id="direccion" required class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                </div>
 
-    <label>Link del video de YouTube (solo código):</label>
-    <input type="text" id="video_youtube">
+                <div class="mt-6">
+                    <label for="musica_url" class="font-semibold text-fuchsia-400">Link de Spotify o música MP3:</label>
+                    <input type="text" id="musica_url" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                </div>
 
-    <label>Fotos (separadas por comas):</label>
-    <textarea id="galeria_fotos" rows="3"></textarea>
+                <div class="mt-6">
+                    <label for="video_youtube" class="font-semibold text-fuchsia-400">Link del video de YouTube (solo código):</label>
+                    <input type="text" id="video_youtube" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none">
+                </div>
 
-    <label>Mensajes para el cumpleañero (separados por comas):</label>
-    <textarea id="mensajes" rows="3"></textarea>
+                <div class="mt-6">
+                    <label for="galeria_fotos" class="font-semibold text-fuchsia-400">Fotos (URLs separadas por comas):</label>
+                    <textarea id="galeria_fotos" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
+                </div>
 
-    <button type="submit">Generar Invitación</button>
-  </form>
+                <div class="mt-6">
+                    <label for="mensajes" class="font-semibold text-fuchsia-400">Mensajes para el cumpleañero (separados por comas):</label>
+                    <textarea id="mensajes" rows="3" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg mt-2 p-2 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 outline-none"></textarea>
+                </div>
 
-  <pre id="output" style="background:#f0f0f0; padding:20px;"></pre>
+                <div class="mt-8">
+                    <button type="submit" class="w-full text-white font-bold py-3 px-4 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 transition duration-300 neon-button">Generar Invitación</button>
+                </div>
+            </form>
+        </div>
 
-  <script>
-    const form = document.getElementById('form-invitacion');
-    const output = document.getElementById('output');
+        <pre id="output" class="w-full max-w-2xl bg-gray-900/80 border border-gray-700 text-green-400 p-6 rounded-lg mt-8 whitespace-pre-wrap break-all"></pre>
+    </div>
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    <script>
+        // Script para iconos
+        feather.replace();
 
-      const data = {
-        nombre: document.getElementById('nombre').value,
-        fecha: document.getElementById('fecha').value,
-        direccion: document.getElementById('direccion').value,
-        mapa_embed: "", // Esto lo podemos automatizar después
-        musica_url: document.getElementById('musica_url').value,
-        video_youtube: document.getElementById('video_youtube').value,
-        galeria_fotos: document.getElementById('galeria_fotos').value.split(',').map(x => x.trim()),
-        mensajes: document.getElementById('mensajes').value.split(',').map(x => x.trim()),
-        tema_color: "#ff3366",
-        tema_nombre: "Fiesta Rosa",
-        galeria_abierta: true
-      };
+        // Script para partículas
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            if (!container) return;
+            const particleCount = 50;
+            const colors = ['#ec4899', '#d946ef', '#8b5cf6', '#3b82f6'];
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 5px ${particle.style.background}, 0 0 10px ${particle.style.background}`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
 
-      output.textContent = JSON.stringify(data, null, 2);
-    });
-  </script>
+        // Script del formulario
+        const form = document.getElementById('form-invitacion');
+        const output = document.getElementById('output');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const data = {
+                nombre: document.getElementById('nombre').value,
+                fecha: document.getElementById('fecha').value,
+                direccion: document.getElementById('direccion').value,
+                mapa_embed: "", // Esto lo podemos automatizar después
+                musica_url: document.getElementById('musica_url').value,
+                video_youtube: document.getElementById('video_youtube').value,
+                galeria_fotos: document.getElementById('galeria_fotos').value.split(',').map(x => x.trim()),
+                mensajes: document.getElementById('mensajes').value.split(',').map(x => x.trim()),
+                tema_color: "#ff3366",
+                tema_nombre: "Fiesta Rosa",
+                galeria_abierta: true
+            };
+
+            output.textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
 </body>
 </html>
